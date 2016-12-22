@@ -14,8 +14,8 @@
     export default {
         data() {
             return {
-                event: {name: '', place: '', date='' },
-                dataSaved: false,
+                event: {name: '', place: '', date:'' },
+                dataSaved: false
             }
         },
 

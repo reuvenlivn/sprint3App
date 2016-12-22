@@ -1,12 +1,12 @@
 <template>
   <div id="app">
       <header>
-            <img src="./assets/logo.png">
-            <h1>My App</h1>
+            <!--<img src="./assets/logo.png">-->
+            <h1>Emails</h1>
             <nav>
                 <!--For using bootstrap nav add: tag="li"-->
                 <!--<router-link to="/" active-class="active" exact>Home</router-link> |-->
-                <router-link to="/event" active-class="active">Events</router-link> |
+                <router-link to="/email" active-class="active">Emails</router-link> |
                 <!--<router-link to="/about" active-class="active">About</router-link>-->
             </nav>
       </header>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import EventCenter from './events/event-center.vue';
+import EmailCenter from './emails/email-center.vue';
 
 export default {
   name: 'app',
@@ -30,7 +30,7 @@ export default {
     }
   },
   components: {
-      EventCenter
+      EmailCenter
   }
 }
 </script>

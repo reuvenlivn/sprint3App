@@ -5,7 +5,7 @@
         <emails-filter @filterChanged="emailsFilter = $email"></emails-filter>
         <email-list :emails="emailsToDisplay" 
             @selectemail="selectemail"
-            @doDelete="deleteemail"
+            @doDelete="deleteEmail"
             @doEdit="emailToEdit = $email"
             >
     </email-list>
@@ -64,8 +64,7 @@
         },
 
        created() {
-           this.reloademails();
-            
+           this.reloadEmails();         
        }, 
 
        components:{

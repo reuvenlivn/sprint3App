@@ -1,26 +1,29 @@
 <template>
   <div id="app">
       <header>
-            <img src="./assets/logo.png">
-            <h1>My App</h1>
+            <!--<img src="./assets/logo.png">-->
+            <h1>Sprint3App</h1>
             <nav>
                 <!--For using bootstrap nav add: tag="li"-->
-                <!--<router-link to="/" active-class="active" exact>Home</router-link> |-->
-                <router-link to="/email" active-class="active">Emails</router-link> |
-                <!--<router-link to="/about" active-class="active">About</router-link>-->
+                <router-link to="/" active-class="active" exact>Home</router-link> |
+                <router-link to="/emails" active-class="active">Emails</router-link> |
+                <router-link to="/events" active-class="active">Events</router-link> |
+                <router-link to="/about" active-class="active">About</router-link>
             </nav>
       </header>
       <router-view></router-view>
     
       <footer>
-          copyrights &copy; 2016 
+          copyrights &copy; 2016-2017 
       </footer>
 
   </div>
 </template>
 
 <script>
-import EmailCenter from './emails/email-center.vue';
+// import CarCenter from './cars/car-center.vue';
+import Emails from './emails/emails/email-center.vue';
+import Events from './events/events/event-center.vue';
 
 export default {
   name: 'app',
@@ -30,7 +33,8 @@ export default {
     }
   },
   components: {
-      EmailCenter
+      Emails,
+      Events
   }
 }
 </script>

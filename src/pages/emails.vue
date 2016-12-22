@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>emails Page</h1>
+        <h1>Emails Page</h1>
         <!--<button @click="goHome">Go Home Ori!</button>-->
         <router-view></router-view>      
     </section>

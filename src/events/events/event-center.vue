@@ -5,17 +5,17 @@
         <events-filter @filterChanged="eventsFilter = $event"></events-filter>
         <event-list :events="eventsToDisplay" 
             @selectevent="selectevent"
-            @doDelete="deleteevent"
+            @doDelete="deleteEvent"
             @doEdit="eventToEdit = $event"
             >
     </event-list>
-    <events-status :eventsCount="eventsToDisplay.length"></events-status>   
+    <!--<events-status :eventsCount="eventsToDisplay.length"></events-status>   -->
     </section>
 </template>
 
 <script>
     import eventList from './event-list.vue'
-    import eventsStatus from './events-status.vue'
+    // import eventsStatus from './events-status.vue'
     import eventsFilter from './events-filter.vue'
     import eventEdit from './event-edit.vue'
 
@@ -64,12 +64,14 @@
         },
 
        created() {
-           this.reloadevents();
-            
+           this.reloadEvents();           
        }, 
 
        components:{
-           eventList, eventsFilter, eventsStatus, eventEdit
+           eventList, 
+           eventsFilter, 
+        //    eventsStatus, 
+           eventEdit
        }
     }
 </script>

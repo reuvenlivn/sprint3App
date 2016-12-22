@@ -1,6 +1,6 @@
-# vue3
+# Sprint3App
 
-> A Vue.js project
+> A Vue.js Sprint3App project
 
 ## Build Setup
 

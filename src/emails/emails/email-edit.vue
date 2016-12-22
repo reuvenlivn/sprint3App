@@ -14,8 +14,8 @@
     export default {
         data() {
             return {
-                email: {name: '', place: '', date='' },
-                dataSaved: false,
+                email: {name: '', place: '', date:'' },
+                dataSaved: false
             }
         },
 

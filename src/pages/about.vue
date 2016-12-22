@@ -11,8 +11,7 @@
     import GoogleMapsLoader from 'google-maps'; 
     GoogleMapsLoader.KEY = 'AIzaSyCmL3JuRNp83SPzwH1YdKhrqOiqc9pc2IY';
 
-    export default {
-        
+    export default {       
         mounted() {
             var uluru = {lat: -25.363, lng: 131.044};
             const options = {
@@ -24,7 +23,6 @@
             });
         }
     }
-
 </script>
 <style scoped>
 .map {
