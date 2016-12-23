@@ -1,6 +1,6 @@
 <template>
     <section :class="{selected: email.isSelected}">
-        {{email.name}} ({{email.place}} {{email.date}})
+        {{email.from}} ({{email.subject}} {{email.isRead}})
         <!--<img :src="`src/assets/email/${email.id}.png`" alt="">-->
         <button @click.stop="deleteEmail">Delete</button>
         <button @click.stop="editEmail">Edit</button>

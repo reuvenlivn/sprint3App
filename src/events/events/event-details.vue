@@ -1,8 +1,8 @@
 <template>
     <section v-if="event">
         <h1>{{event.name}} </h1>
-        <h2>{{event.place}} </h2>
-        <h2>{{event.date}} </h2>
+        <h2>{{event.timeToDisplay}} </h2>
+        <h2>{{event.description}} </h2>
         <img :src="`/src/assets/event/${event.id}.png`" alt="">
         <button @click="nextEvent">Next</button>
     </section>
@@ -24,7 +24,7 @@
             // },
 
             loadEvent(eventId) {
-                this.$http.get(`item/${eventId}`)
+                this.$http.get(`event/${eventId}`)
                     .then(res => res.json())
                     .then(event => this.event = event);
             }

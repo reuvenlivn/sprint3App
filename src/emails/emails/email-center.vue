@@ -42,12 +42,12 @@
             deleteEmail(deleteReq) {
                     console.log('Deleting email: ', deleteReq.emailId, ' requested at: ', deleteReq.timestamp);
                     this.emails = this.emails.filter(email => email.id !== deleteReq.emailId);
-                    this.$http.delete(`item/${deleteReq.emailId}`);// TODO: change to emails/....
+                    this.$http.delete(`email/${deleteReq.emailId}`);
             },
             
             reloadEmails() {
                 // fetch('http://localhost:3003/item')
-                 this.$http.get('item')
+                 this.$http.get('email')
                     .then(res => res.json())
                     .then(emails => this.emails = emails);
                  this.emailToEdit = undefined;   
@@ -58,7 +58,7 @@
         computed:{
             emailsToDisplay() {
                 return this.emails.filter(email => {
-                    return email.name.includes(this.emailsFilter.name);
+                    return email.subject.includes(this.emailsFilter.name);
                 })
             }
         },
