@@ -1,4 +1,4 @@
-<template>
+h<template>
     <section>
         <h1>Event List</h1>
         <ul>
@@ -9,7 +9,8 @@
                              @doEdit="$emit('doEdit', $event)"
                              >
                 </event-preview>
-            </li>         
+            </li>  
+
         </ul>
     </section>
 </template>

@@ -4,7 +4,7 @@
         <router-link to="/event/edit">New event</router-link>
         <events-filter @filterChanged="eventsFilter = $event"></events-filter>
         <event-list :events="eventsToDisplay" 
-            @selectevent="selectevent"
+            @selectEvent="selectEvent"
             @doDelete="deleteEvent"
             @doEdit="eventToEdit = $event"
             >
@@ -30,7 +30,7 @@
         },
 
         methods: {
-            selectevent(eventId){
+            selectEvent(eventId){
                 // console.log('Selecting ', eventId);
                 // this.events.forEach(event => {
                 //     if (event.id === eventId)   event.isSelected = !event.isSelected;
@@ -42,12 +42,12 @@
             deleteEvent(deleteReq) {
                     console.log('Deleting event: ', deleteReq.eventId, ' requested at: ', deleteReq.timestamp);
                     this.events = this.events.filter(event => event.id !== deleteReq.eventId);
-                    this.$http.delete(`item/${deleteReq.eventId}`);// TODO: change to events/....
+                    this.$http.delete(`event/${deleteReq.eventId}`);// TODO: change to events/....
             },
             
             reloadEvents() {
-                // fetch('http://localhost:3003/item')
-                 this.$http.get('item')
+                // fetch('http://localhost:3003/event')
+                 this.$http.get('event')
                     .then(res => res.json())
                     .then(events => this.events = events);
                  this.eventToEdit = undefined;   

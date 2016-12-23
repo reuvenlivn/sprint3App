@@ -1,8 +1,12 @@
 <template>
     <section v-if="email">
-        <h1>{{email.name}} </h1>
-        <h2>{{email.place}} </h2>
+        <h1>{{email.from}} </h1>
+        <h2>{{email.to}} </h2>
+        <h2>{{email.subject}} </h2>
         <h2>{{email.date}} </h2>
+        <h2>{{email.contents}} </h2>
+        <h2>{{email.isRead}} </h2>
+
         <img :src="`/src/assets/email/${email.id}.png`" alt="">
         <button @click="nextEmail">Next</button>
     </section>

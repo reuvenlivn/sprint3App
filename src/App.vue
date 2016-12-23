@@ -6,8 +6,8 @@
             <nav>
                 <!--For using bootstrap nav add: tag="li"-->
                 <router-link to="/" active-class="active" exact>Home</router-link> |
-                <router-link to="/emails" active-class="active">Emails</router-link> |
-                <router-link to="/events" active-class="active">Events</router-link> |
+                <router-link to="/email" active-class="active">Emails</router-link> |
+                <router-link to="/event" active-class="active">Events</router-link> |
                 <router-link to="/about" active-class="active">About</router-link>
             </nav>
       </header>

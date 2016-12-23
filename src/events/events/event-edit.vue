@@ -40,12 +40,12 @@
                 }
 
                 console.log('Saving', this.eventToEdit);
-                if (this.event.id)  this.$http.put(`item`, this.eventToEdit).then(handleResult);
-                else                this.$http.post('item', this.eventToEdit).then(handleResult);
+                if (this.event.id)  this.$http.put(`event`, this.eventToEdit).then(handleResult);
+                else                this.$http.post('event', this.eventToEdit).then(handleResult);
             },
 
             loadEvent(eventId) {
-                this.$http.get(`item/${eventId}`)
+                this.$http.get(`event/${eventId}`)
                     .then(res => res.json())
                     .then(event => this.event = event);
             }

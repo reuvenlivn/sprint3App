@@ -15,13 +15,13 @@ import EmailEdit          from './emails/emails/email-edit.vue';
 export default [
     {path: '/', component: Home},
     {path: '/about', component: About},
-    {path: '/events', component: Events, children: [
+    {path: '/event', component: Events, children: [
         {path: '', component: EventCenter},
         {path: 'edit', component: EventEdit},
         {path: ':id/edit', component: EventEdit},
         {path: ':id', component: EventDetails},
     ]},
-    {path: '/emails', component: Emails, children: [
+    {path: '/email', component: Emails, children: [
         {path: '', component: EmailCenter},
         {path: 'edit', component: EmailEdit},
         {path: ':id/edit', component: EmailEdit},
