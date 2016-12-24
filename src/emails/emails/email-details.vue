@@ -1,14 +1,10 @@
 <template>
     <section v-if="email">
-        <h1>{{email.from}} </h1>
-        <h2>{{email.to}} </h2>
-        <h2>{{email.subject}} </h2>
-        <h2>{{email.date}} </h2>
-        <h2>{{email.contents}} </h2>
-        <h2>{{email.isRead}} </h2>
-
-        <img :src="`/src/assets/email/${email.id}.png`" alt="">
-        <button @click="nextEmail">Next</button>
+        <h2>from: {{email.from}} </h2>
+        <h2>to: {{email.to}} </h2>
+        <h2>subject: {{email.subject}} </h2>
+        <h2>body: {{email.body}} </h2>
+        <h2>read?: {{email.isRead}} </h2>
     </section>
 </template>
 
@@ -28,22 +24,22 @@
             // },
 
             loadEmail(emailId) {
-                this.$http.get(`item/${emailId}`)
+                this.$http.get(`email/${emailId}`)
                     .then(res => res.json())
                     .then(email => this.email = email);
+                // email.isRead = true;
             }
         },
 
         created() {
             // console.log('this.$route.params', this.$route.params);
              const emailId = this.$route.params.id;
+             console.log('emailId', emailId);       
              this.loadEmail(emailId);         
         }
     }
 </script>
 
 <style scoped>
-    img {
-        max-width: 400px;
-    }    
+ 
 </style>

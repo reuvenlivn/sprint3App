@@ -1,14 +1,11 @@
 <template>
-    <section :class="{selected: event.isSelected}">
-        <div>{{event.name}}</div>
-        <div>{{event.venue.address_1}}</div>
-        <div>{{event.venue.address_2}}</div>
-        <div>{{event.venue.city}}</div>
-        <div v-html=shortContent(event.description)></div>
-        <!--<img :src="`src/assets/event/${event.id}.png`" alt="">-->
+    <section class="event-preview" :class="{selected: event.isSelected}">
         <button @click.stop="deleteEvent">Delete</button>
-        <!--<button @click.stop="editEvent">Edit</button>-->
-       <router-link :to="`/event/${event.id}/edit`">Edit</router-link>
+        <router-link :to="`/event/${event.id}/edit`">Edit</router-link>
+        <div>{{event.name}}</div>
+        <div>{{readableTime(event.time)}}</div>
+        <div v-html=shortContent(event.description)></div>
+        <p class="end-of-preview">Click for more details...</p>
     </section>
 </template>
 
@@ -38,7 +35,11 @@
 
             shortContent(longStr){
                  return longStr.substring(0, 200);
-            }      
+            },
+
+            readableTime(timestamp)  {
+                return (new Date(timestamp ));
+            } 
         }
     }
 </script>
@@ -50,5 +51,24 @@
     .selected {
         border: 1px solid darkorchid;
     }
-     
+    .event-preview{
+        display: block;
+        padding: 4px;
+        margin-bottom: 20px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        text-align:left;
+        max-width:344px;
+    }
+    .end-of-preview{
+        color: 1px solid #aaa
+    }
+    .img {
+        border-width: 0px;
+        border-style: initial;
+        border-color: initial;
+        border-image: initial;
+    }
 </style>

@@ -3,7 +3,7 @@ h<template>
         <h1>Event List</h1>
         <ul>
             <li v-for="(currEvent, idx) in events">
-                <event-preview :event="currEvent"
+                <event-preview class="event-preview" :event="currEvent"
                              @click.stop.native="$emit('selectEvent',currEvent.id)"
                              @doDelete="propegateDeleteReq"
                              @doEdit="$emit('doEdit', $event)"
@@ -43,5 +43,12 @@ h<template>
 </script>
 
 <style scoped>
-
+    ul {
+    list-style-type: none;
+    }
+    event-preview{
+        border: 1px solid black;
+        padding: 4px;
+        margin-bottom: 20px;
+    }
 </style>

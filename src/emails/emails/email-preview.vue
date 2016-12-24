@@ -1,15 +1,13 @@
 <template>
     <section :class="{selected: email.isSelected}">
-        {{email.from}} ({{email.subject}} {{email.isRead}})
-        <!--<img :src="`src/assets/email/${email.id}.png`" alt="">-->
         <button @click.stop="deleteEmail">Delete</button>
-        <button @click.stop="editEmail">Edit</button>
-       <router-link :to="`/email/${email.id}/edit`">Edit</router-link>
+        {{email.subject}}
     </section>
 </template>
 
 <script>
     export default {
+
         props: {
             email: {
                 required: true,
@@ -30,7 +28,11 @@
 
             editEmail() {
                 this.$emit('doEdit', this.email);
-            },        
+            },
+
+            toEnvelopeSym(isRead) {
+                return isRead ? '&#9993;' : '&#9993;'
+            }  
         }
     }
 </script>

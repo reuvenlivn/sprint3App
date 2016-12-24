@@ -1,12 +1,11 @@
 <template>
     <section>
-        <h1>Event List</h1>
+        <!--<h1>Email List</h1>-->
         <ul>
-            <li v-for="(currEvent, idx) in emails">
-                <email-preview :email="currEvent"
-                             @click.stop.native="$emit('selectEvent',currEvent.id)"
+            <li v-for="(currEmail, idx) in emails">
+                <email-preview class="preview"  :email="currEmail"
+                             @click.stop.native="$emit('selectEmail',currEmail.id)"
                              @doDelete="propegateDeleteReq"
-                             @doEdit="$emit('doEdit', $email)"
                              >
                 </email-preview>
             </li>         
@@ -15,7 +14,8 @@
 </template>
 
 <script>
-    import EventPreview from './email-preview.vue'
+    import emailPreview from './email-preview.vue'
+
     export default {
         props: {
             emails: {
@@ -31,16 +31,25 @@
 
         methods: {
            propegateDeleteReq(deleteReq) {
-               this.$emit('doDelete', deleteReq)//TODO: is it found in emails ?????
+               this.$emit('doDelete', deleteReq)
            }
         },
         
         components: {
-            'email-preview' : EventPreview
+            emailPreview
         }    
     }
 </script>
 
 <style scoped>
-
+   ul {
+        list-style-type: none;
+        width:100%
+    }
+    .preview{
+        border: solid 1px black;
+        text-align: left;
+        float:left;
+        width:100%
+    } 
 </style>

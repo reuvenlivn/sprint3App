@@ -1,18 +1,31 @@
 <template>
     <section>
-        <h2>Filter</h2>
-        <input type="text" @keyup.enter="emitFilter" v-model.lazy="filter.name">
-    </section>
+        <h4>Search</h4>
+        <input type="text" @keyup.enter="emitFilter" v-model.lazy="filter.subject">
+
+        <select>
+            <option value="all">All</option>
+            <option value="read">Read</option>
+            <option value="unread">Unread</option>
+        </select>
+         
+    </section>  
 </template>
 
 
 <script>
     export default {
+
+        props:{
+            selected: null
+        },
+
         data() {
             return {
-                filter: {name: ''}
+                filter: {subject: ''}
             }
         },
+
         methods: {
             emitFilter() {
                 this.$emit('filterChanged', this.filter);
@@ -25,7 +38,7 @@
 <style scoped>
     section {
         background-color: lightpink;
-        padding: 10px;
+        padding: 5px;
         border-radius: 5px;
     }
 
