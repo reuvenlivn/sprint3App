@@ -1,16 +1,25 @@
 <template>
-    <section>
+    <div class="email-container">
+        <div class="email-header">
         <h1>email Center</h1>
-        <router-link to="/email/edit">New email</router-link>
-        <emails-filter @filterChanged="emailsFilter = $email"></emails-filter>
-        <email-list :emails="emailsToDisplay" 
-            @selectemail="selectemail"
-            @doDelete="deleteEmail"
-            @doEdit="emailToEdit = $email"
-            >
-    </email-list>
-    <emails-status :emailsCount="emailsToDisplay.length"></emails-status>   
-    </section>
+            <router-link to="/email/edit">New email</router-link>
+            <emails-footer @filterChanged="emailsFilter = $event">
+            </emails-footer>
+        </div>
+        <div class="emails">
+            <email-list class="email-list" :emails="emailsToDisplay" 
+                @selectEmail="selectEmail"
+                @doDelete="deleteEmail"
+                >
+            </email-list>
+            <email-details class="email-ditails">
+            </email-details>      
+        </div>
+        <div class="email-footer">
+            <emails-status :emailsCount="emailsToDisplay.length">
+        </emails-status>   
+        </div>
+    </div>
 </template>
 
 <script>
@@ -18,19 +27,20 @@
     import emailsStatus from './emails-status.vue'
     import emailsFilter from './emails-filter.vue'
     import emailEdit from './email-edit.vue'
+    import emailDetails from './email-details.vue'
 
     export default {
         data() {
             return {
                 emails: [],
                 emailToEdit: undefined,
-                emailsFilter: {name: ''},
+                emailsFilter: {subject: ''},
                 showemailEdit: false
             }
         },
 
         methods: {
-            selectemail(emailId){
+            selectEmail(emailId){
                 // console.log('Selecting ', emailId);
                 // this.emails.forEach(email => {
                 //     if (email.id === emailId)   email.isSelected = !email.isSelected;
@@ -58,7 +68,7 @@
         computed:{
             emailsToDisplay() {
                 return this.emails.filter(email => {
-                    return email.subject.includes(this.emailsFilter.name);
+                    return email.subject.includes(this.emailsFilter.subject);
                 })
             }
         },
@@ -68,11 +78,45 @@
        }, 
 
        components:{
-           emailList, emailsFilter, emailsStatus, emailEdit
+           emailList, 
+           emailsFilter, 
+           emailsStatus, 
+           emailEdit,
+           emailDetails
        }
     }
 </script>
 
 <style scoped>
+.email-container{
+    border: solid 1px black;
+    width:100%;
+    max-width:980px;
+    margin: auto;
+}
+.email-header{
+    width:100%;
+}
 
+.email-footer{
+    width:100%;
+}
+
+.emails{
+    width:100%;
+}
+
+.email-list{
+    border: solid 1px grey;
+    width:30%;
+    min-width:150px;
+    float: left;
+}
+
+.email-details{
+    border: solid 1px blue;
+    width:65%;
+    margin-right:10px;
+    float:left;
+}
 </style>

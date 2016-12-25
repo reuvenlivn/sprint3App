@@ -1,21 +1,21 @@
 <template>
-    <section>
+    <section class="email-edit">
         <form>
-            Name: <input type="text" v-model="emailToEdit.name">
-            Place: <input type="number" v-model="emailToEdit.place">
-            Date: <input type="number" v-model="emailToEdit.date">
-            <button @click.premail="save">Save</button>
-        </form>
-       
+            To: <input type="text" v-model="emailToEdit.to"><br>
+            Subject: <input type="text" v-model="emailToEdit.subject"><br>
+            Body: <br> <textarea rows="10" cols="50" v-model="emailToEdit.body"></textarea><br>
+            <button @click.prevent="send">Send</button>
+        </form> 
     </section>
 </template>
 
 <script>
     export default {
         data() {
+            const ME = 'me@meme.coco';
             return {
-                email: {name: '', place: '', date:'' },
-                dataSaved: false
+                email: {from:ME, to: '', subject:'', body:'', isRead:false },
+                dataSent: false
             }
         },
 
@@ -27,21 +27,21 @@
         },
        
         methods: {
-            save() {
-                let that = this;
+            send() {
+                // let that = this;
                 function handleResult(res) {
                     res.json()
                    .then(res => {
                            console.log("Result from server", res);
                         //    that.$emit('done')
-                        this.dataSaved = true;
+                        this.dataSent = true;
                         this.$router.push('/email');
                        }) 
                 }
 
-                console.log('Saving', this.emailToEdit);
-                if (this.email.id)  this.$http.put(`item`, this.emailToEdit).then(handleResult);
-                else                this.$http.post('item', this.emailToEdit).then(handleResult);
+                console.log('Sending', this.emailToEdit);
+                if (this.email.id)  this.$http.put('email', this.emailToEdit).then(handleResult);
+                else                this.$http.post('email', this.emailToEdit).then(handleResult);
             },
 
             loadEmail(emailId) {
@@ -52,16 +52,19 @@
         },
        
         created() {
-             const emailId = this.$route.params.id
+             const emailId = this.$route.params.id;
+             console.log('emailId(edit)',emailId);
+             
              if (emailId)    this.loadEmail(emailId);
         },
 
         beforeRouteLeave(to, from, next) {
-            if  (this.dataSaved) return next();
-            if  ((this.email.name  === this.emailToEdit.name) && 
-                (this.email.place === this.emailToEdit.place)&&
-                (this.email.date === this.emailToEdit.date))
-                        return next();
+            if  (this.dataSent) return next();
+
+            if  ((this.email.to  === this.emailToEdit.to) && 
+                (this.email.subject === this.emailToEdit.subject)&&
+                (this.email.body === this.emailToEdit.body))
+                    return next();
 
             const ans = confirm('Change will not save!');
             if (ans)        next();
@@ -71,5 +74,7 @@
 </script>
 
 <style scoped>
-    
+.email-edit {
+    width:60%
+}   
 </style>
