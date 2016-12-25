@@ -1,7 +1,7 @@
 <template>
     <section :class="{selected: email.isSelected}">
         <button @click.stop="deleteEmail">Delete</button>
-        {{email.subject}}
+      {{toEnvelopeSym(email.isRead)}} &#9993; {{email.subject}}
     </section>
 </template>
 

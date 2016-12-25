@@ -41,7 +41,21 @@
             loadEvent(eventId) {
                 this.$http.get(`event/${eventId}`)
                     .then(res => res.json())
-                    .then(event => this.event = event);
+                    .then(event => {
+                        this.event = event;
+                        console.log('this.event',this.event.venue);
+                        
+                        let location = { lat: this.event.venue.lat, lng: this.event.venue.lon };
+                        const options = {
+                            zoom: 4,
+                            center: location
+                        };
+                        GoogleMapsLoader.load(google => {
+                            new google.maps.Map(this.$refs.map, options);
+                        });
+                    });
+// .then 
+
                 // console.log('this', this);          
             },
 
@@ -57,20 +71,23 @@
         },
 
         mounted() {
-    // //        var uluru = {lat: -25.363, lng: 131.044};        
-    //         var location =  { lat : event.venue.lat, lng: event.venue.lon };
-    //         const options = {
-    //                             zoom: 4,
-    //                             center: location
-    //                         };
-    //         GoogleMapsLoader.load(google => {
-    //             new google.maps.Map(this.$refs.map, options);
-    //         });
+    //        var uluru = {lat: -25.363, lng: 131.044};        
+            // var location =  { lat : event.venue.lat, lng: event.venue.lon };
+            // const options = {
+            //                     zoom: 4,
+            //                     center: location
+            //                 };
+            // GoogleMapsLoader.load(google => {
+            //     new google.maps.Map(this.$refs.map, options);
+            // });
         }
     }
 </script>
 
 <style scoped>
+.map {
+    height: 400px;
+}
     .event-heading {
         color: rgb(255, 255, 255);
         background-color: rgb(51, 122, 183);
