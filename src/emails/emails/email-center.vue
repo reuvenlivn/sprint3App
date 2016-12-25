@@ -1,10 +1,8 @@
 <template>
     <div class="email-container">
         <div class="email-header">
-        <h1>email Center</h1>
+            <!--<h1>email Center</h1>-->
             <router-link to="/email/edit">New email</router-link>
-            <emails-footer @filterChanged="emailsFilter = $event">
-            </emails-footer>
         </div>
         <div class="emails">
             <email-list class="email-list" :emails="emailsToDisplay" 
@@ -12,12 +10,13 @@
                 @doDelete="deleteEmail"
                 >
             </email-list>
-            <email-details class="email-ditails">
-            </email-details>      
+            <!--<child v-bind:childMsg="parentMsg"></child>-->
+            <email-details :emailId="selectedId"></email-details>      
         </div>
         <div class="email-footer">
-            <emails-status :emailsCount="emailsToDisplay.length">
-        </emails-status>   
+            <emails-status 
+                :emailsCount="emailsToDisplay.length">
+            </emails-status> 
         </div>
     </div>
 </template>
@@ -34,6 +33,7 @@
             return {
                 emails: [],
                 emailToEdit: undefined,
+                selectedId: 1,
                 emailsFilter: {subject: ''},
                 showemailEdit: false
             }
@@ -41,12 +41,8 @@
 
         methods: {
             selectEmail(emailId){
-                // console.log('Selecting ', emailId);
-                // this.emails.forEach(email => {
-                //     if (email.id === emailId)   email.isSelected = !email.isSelected;
-                //     else                    email.isSelected = false;
-                // });
-                this.$router.push(`/email/${emailId}`);
+                this.selectedId = emailId;
+                console.log('email center selectedId',this.selectedId);          
             },
 
             deleteEmail(deleteReq) {
@@ -93,6 +89,7 @@
     width:100%;
     max-width:980px;
     margin: auto;
+
 }
 .email-header{
     width:100%;
@@ -104,6 +101,8 @@
 
 .emails{
     width:100%;
+    height:500px;
+    overflow:scroll;
 }
 
 .email-list{
@@ -111,12 +110,7 @@
     width:30%;
     min-width:150px;
     float: left;
+    margin-top:0px;
 }
 
-.email-details{
-    border: solid 1px blue;
-    width:65%;
-    margin-right:10px;
-    float:left;
-}
 </style>

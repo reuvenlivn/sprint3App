@@ -32,7 +32,7 @@
                 function handleResult(res) {
                     res.json()
                    .then(res => {
-                           console.log("Result from server", res);
+                    //       console.log("Result from server", res);
                         //    that.$emit('done')
                         this.dataSaved = true;
                         this.$router.push('/event');

@@ -22,7 +22,8 @@
 <script>
 
     import GoogleMapsLoader from 'google-maps'; 
-    GoogleMapsLoader.KEY = 'AIzaSyCmL3JuRNp83SPzwH1YdKhrqOiqc9pc2IY';
+    // GoogleMapsLoader.KEY = 'AIzaSyCmL3JuRNp83SPzwH1YdKhrqOiqc9pc2IY';
+    GoogleMapsLoader.KEY = 'AIzaSyA0qEXXktgHc71D-mIUFkBo3VyfeuHRm_Q';
 
     export default {
         data() {
@@ -40,24 +41,20 @@
 
             loadEvent(eventId) {
                 this.$http.get(`event/${eventId}`)
-                    .then(res => res.json())
-
-                   
+                    .then(res => res.json())               
                     .then(event => {
                         this.event = event;
                         console.log('this.event',this.event.venue);
                         
                         let location = { lat: this.event.venue.lat, lng: this.event.venue.lon };
                         const options = {
-                            zoom: 4,
+                            zoom: 17,
                             center: location
                         };
                         GoogleMapsLoader.load(google => {
                             new google.maps.Map(this.$refs.map, options);
                         });
-                    });
-// .then 
-                // console.log('this', this);          
+                    });      
             },
 
             readableTime(timestamp)  {
@@ -72,16 +69,6 @@
         },
 
         mounted() {
-
-    //        var uluru = {lat: -25.363, lng: 131.044};        
-            // var location =  { lat : event.venue.lat, lng: event.venue.lon };
-            // const options = {
-            //                     zoom: 4,
-            //                     center: location
-            //                 };
-            // GoogleMapsLoader.load(google => {
-            //     new google.maps.Map(this.$refs.map, options);
-            // });
         }
     }
 </script>
