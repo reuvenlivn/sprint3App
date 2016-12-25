@@ -1,21 +1,21 @@
 <template>
     <section>
-    <h1>About Us</h1>
-    <div class="map" ref="map">
-    </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, magnam non vel modi natus mollitia, aperiam saepe quaerat perspiciatis sunt aut, incidunt adipisci itaque hic impedit, consequuntur placeat. Dicta, ut!</p>
+        <h1>About Us</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, magnam non vel modi natus mollitia, aperiam saepe quaerat perspiciatis sunt aut, incidunt adipisci itaque hic impedit, consequuntur placeat. Dicta, ut!</p>
+        <div class="map" ref="map"> </div>
     </section>
 </template>
 
 <script>
     import GoogleMapsLoader from 'google-maps'; 
-    GoogleMapsLoader.KEY = 'AIzaSyCmL3JuRNp83SPzwH1YdKhrqOiqc9pc2IY';
+    GoogleMapsLoader.KEY = 'AIzaSyA0qEXXktgHc71D-mIUFkBo3VyfeuHRm_Q';
 
     export default {       
         mounted() {
-            var uluru = {lat: -25.363, lng: 131.044};
+            // habonim 4,ranat gen, israel.
+            var uluru = {lat: 32.087893, lng: 34.803038};
             const options = {
-                                zoom: 4,
+                                zoom: 17,
                                 center: uluru
                             };
             GoogleMapsLoader.load(google => {
