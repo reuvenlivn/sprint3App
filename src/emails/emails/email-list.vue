@@ -35,19 +35,6 @@
                this.$emit('doDelete', deleteReq)
            },
 
-           // nobody calls it. just to store handleResult function.
-        //    update() {
-        //     function handleResult(res) {
-        //             res.json()
-        //            .then(res => {
-        //                    console.log("Result from server", res);
-        //                 //    that.$emit('done')
-        //                 this.dataSaved = true;
-        //                 // this.$router.push('/email');
-        //                }) 
-        //         }
-        //    },
-
            handleSelect(idx) {
                 let currEmail = this.emails[idx];
 
@@ -62,7 +49,6 @@
                 this.$http.put('email', currEmail).then(function (res) {
                     res.json()
                         .then(res => {
-                   //         console.log("Result from server", res);
                             this.dataSaved = true;
                             // this.$router.push('/email');
                         })
@@ -83,13 +69,16 @@
         width:100%
     }
     .preview{
-        border: solid 1px black;
+        border: solid 1px darkgrey;
         text-align: left;
-        font-weight:bold;
         font-size:14px;
         float:left;
         width:100%;
         height:60px;
         overflow:hidden;
     } 
+
+    .bolded {
+        font-weight: bold
+    }
 </style>
