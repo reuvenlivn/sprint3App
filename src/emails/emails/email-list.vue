@@ -46,12 +46,13 @@
                 //             this.$http.put('email', currEmail).then(handleResult);
 
                 // send the email to the server.
-                this.$http.put('email', currEmail).then(function (res) {
+                this.$http.put('email', currEmail).
+                then(function (res) {
                     res.json()
-                        .then(res => {
-                            this.dataSaved = true;
-                            // this.$router.push('/email');
-                        })
+                    .then(res => {
+                        this.dataSaved = true;
+                        // this.$router.push('/email');
+                    })
                 });
             }
         },
