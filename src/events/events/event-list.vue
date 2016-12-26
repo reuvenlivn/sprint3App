@@ -1,6 +1,6 @@
 h<template>
     <section class="container">
-        <h1>Event List</h1>
+        <!--<h1>Event List</h1>-->
         <ul>
             <li v-for="(currEvent, idx) in events">
                 <event-preview class="event-preview" :event="currEvent"

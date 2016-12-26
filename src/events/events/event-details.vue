@@ -42,42 +42,40 @@
                     .then(res => res.json())               
                     .then(event => {
                         this.event = event;
-                        // console.log('this.event',this.event.venue);
-                        
-                        let location = { lat: this.event.venue.lat, lng: this.event.venue.lon };
+  
 
-                        const mapOptions = {
-                            zoom: 17,
-                            center: location
+                    // console.log('this.event',this.event.venue);
+                    let location = { lat: this.event.venue.lat, lng: this.event.venue.lon };
+
+                    const mapOptions = {
+                        zoom: 17,
+                        center: location
+                    };
+
+                    GoogleMapsLoader.load(google => {
+                        let myMap = new google.maps.Map(this.$refs.map, mapOptions);
+                        const markerOptions = {
+                            position: location,
+                            map: myMap,
+                            title: this.event.venue.name
                         };
+                        let marker = new google.maps.Marker(markerOptions);
+                    });
+                  });
 
-                        let myMap;
-                        GoogleMapsLoader.load(google => {
-                            new google.maps.Map(this.$refs.map, mapOptions);
-                        });
-              
-                        // const markerOptions = {
-                        //     position: location,
-                        //     map: myMap,
-                        //     title: this.event.venue.name 
-                        // };
-                        // console.log('markerOptions', markerOptions);
-
-                        // GoogleMapsLoader.load(google => {
-                        //     new google.maps.Marker(markerOptions);
-                        // });   
-
-                    })
+     //             console.log('markerOptions', markerOptions);            
             }
         },
 
         created() {
-            // console.log('this.$route.params', this.$route.params);
-            const eventId = this.$route.params.id;
-            this.loadEvent(eventId);
+     
         },
 
-        mounted() { }
+        mounted() { 
+       // console.log('this.$route.params', this.$route.params);
+            const eventId = this.$route.params.id;
+            this.loadEvent(eventId);
+        }
 
     }
 </script>
@@ -96,13 +94,11 @@
     .event-panel {
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
-        padding: 10px 15px;
-        /*border-bottom: 1px solid transparent;*/
         text-align: left;
         border-color: rgb(51, 122, 183);
         border:1px solid;
-        margin:5px;
-        padding:5px;
+        margin:3px;
+        padding:20px;
     }   
  
 </style>
