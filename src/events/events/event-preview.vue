@@ -4,7 +4,7 @@
         <router-link :to="`/event/${event.id}/edit`">Edit</router-link>
         <div>{{event.name}}</div>
         <div>{{readableTime(event.time)}}</div>
-        <div v-html=shortContent(event.description)></div>
+        <div class = "description" v-html=shortContent(event.description)></div>
         <p class="end-of-preview">Click for more details...</p>
 
     </section>
@@ -61,15 +61,25 @@
         border: 1px solid #aaa;
         border-radius: 4px;
         text-align:left;
-        max-width:344px;
+        max-width:310px;
+        height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: 14px;
+        word-wrap: break-word;
     }
+
     .end-of-preview{
         color: 1px solid #aaa
     }
-    .img {
+    .description{
+        max-width:344px; 
+    }
+    /*.img {
         border-width: 0px;
         border-style: initial;
         border-color: initial;
         border-image: initial;
-    }
+        width:20%;
+    }*/
 </style>

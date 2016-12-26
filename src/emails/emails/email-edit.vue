@@ -75,6 +75,18 @@
 
 <style scoped>
 .email-edit {
-    width:60%
-}   
+    width:60%;
+    align-items:left;
+} 
+.form {
+        align-items:left;
+
+}
+.textarea{
+	height:200px;
+	width: 60%;
+} 
+.input{
+   	width: 60%; 
+}
 </style>

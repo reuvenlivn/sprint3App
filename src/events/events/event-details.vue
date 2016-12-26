@@ -22,7 +22,6 @@
 <script>
 
     import GoogleMapsLoader from 'google-maps'; 
-    // GoogleMapsLoader.KEY = 'AIzaSyCmL3JuRNp83SPzwH1YdKhrqOiqc9pc2IY';
     GoogleMapsLoader.KEY = 'AIzaSyA0qEXXktgHc71D-mIUFkBo3VyfeuHRm_Q';
 
     export default {
@@ -33,50 +32,61 @@
         },
 
         methods: {
-            // nextEvent(){
-            //     const nextId = this.event.id+1;
-            //     this.$router.push(`/event/${nextId}`);
-            //     this.loadEvent(this.event.id+1);
-            // },
+
+            readableTime(timestamp)  {
+                return (new Date(timestamp));
+            } ,
 
             loadEvent(eventId) {
                 this.$http.get(`event/${eventId}`)
                     .then(res => res.json())               
                     .then(event => {
                         this.event = event;
-                        console.log('this.event',this.event.venue);
+                        // console.log('this.event',this.event.venue);
                         
                         let location = { lat: this.event.venue.lat, lng: this.event.venue.lon };
-                        const options = {
+
+                        const mapOptions = {
                             zoom: 17,
                             center: location
                         };
-                        GoogleMapsLoader.load(google => {
-                            new google.maps.Map(this.$refs.map, options);
-                        });
-                    });      
-            },
 
-            readableTime(timestamp)  {
-                return (new Date(timestamp));
-            } 
+                        let myMap;
+                        GoogleMapsLoader.load(google => {
+                            new google.maps.Map(this.$refs.map, mapOptions);
+                        });
+              
+                        // const markerOptions = {
+                        //     position: location,
+                        //     map: myMap,
+                        //     title: this.event.venue.name 
+                        // };
+                        // console.log('markerOptions', markerOptions);
+
+                        // GoogleMapsLoader.load(google => {
+                        //     new google.maps.Marker(markerOptions);
+                        // });   
+
+                    })
+            }
         },
 
         created() {
             // console.log('this.$route.params', this.$route.params);
-             const eventId = this.$route.params.id;
-             this.loadEvent(eventId);         
+            const eventId = this.$route.params.id;
+            this.loadEvent(eventId);
         },
 
-        mounted() {
-        }
+        mounted() { }
+
     }
 </script>
 
+
 <style scoped>
-.map {
-    height: 400px;
-}
+    .map {
+        height: 400px;
+    }
     .event-heading {
         color: rgb(255, 255, 255);
         background-color: rgb(51, 122, 183);
