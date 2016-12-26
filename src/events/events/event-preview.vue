@@ -53,14 +53,14 @@
         border: 1px solid darkorchid;
     }
     .event-preview{
-        display: block;
+       margin-left: 35px;
         padding: 4px;
         margin-bottom: 20px;
         line-height: 1.42857143;
         background-color: #fff;
         border: 1px solid #aaa;
         border-radius: 4px;
-        text-align:left;
+        width: 100%;
         max-width:310px;
         height: 300px;
         overflow-y: auto;

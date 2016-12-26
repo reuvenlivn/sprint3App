@@ -1,5 +1,5 @@
 h<template>
-    <section>
+    <section class="container">
         <h1>Event List</h1>
         <ul>
             <li v-for="(currEvent, idx) in events">
@@ -43,9 +43,22 @@ h<template>
 </script>
 
 <style scoped>
+
+.container{
+
+    width: 100%;
+}
+
     ul {
     list-style-type: none;
+ 
     }
+
+li{
+   width: 32%;
+   display:inline-block;
+}
+
     event-preview{
         border: 1px solid black;
         padding: 4px;
