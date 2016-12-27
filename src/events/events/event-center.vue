@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>event Center</h1>
+        <!--<h1>event Center</h1>-->
         <router-link to="/event/edit">New event</router-link>
         <events-filter @filterChanged="eventsFilter = $event"></events-filter>
         <event-list :events="eventsToDisplay" 

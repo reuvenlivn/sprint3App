@@ -1,10 +1,8 @@
 <template>
     <section class="email-details" v-if="email">
-        <h2>from: {{email.from}} </h2>
-        <h2>to: {{email.to}} </h2>
-        <h2>subject: {{email.subject}} </h2>
-        <h2>body: {{email.body}} </h2>
-        <h2>read?: {{email.isRead}} </h2>
+        <div class="subject">{{email.subject}}</div><hr>
+        <div>From: {{email.from}} </div><hr>
+        {{email.body}}
     </section>
 </template>
 
@@ -58,12 +56,21 @@
 <style scoped>
  
 .email-details{
-    border: solid 1px blue;
+    border: solid 1px grey;
     width:65%;
+    height:465px;
     margin-right:10px;
     margin-left:10px;
     float:left;
     text-align:left;
-    font-size:12px;
+    font-size:14px;
+    padding:5px;
+    overflow-y:scroll;
+    overflow-x:hidden  
+
 }
+.subject{
+    font-weight: bold;
+}
+
 </style>

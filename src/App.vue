@@ -44,19 +44,23 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
-h1, h2 {
+h1 {
   font-weight: normal;
+  margin-bottom:3px;
 }
 
 a {
-  color: #42b983;
+  color: #35495e;
+  padding:5px;
+  margin:5px;
+  font-size:18px
 }
 
 header {
-    border-bottom: 5px solid #35495e;
+    border-bottom: 1px solid #35495e;
 }
 
 header img{
@@ -67,7 +71,8 @@ footer {
     width: 100%;
     text-align:center;
     padding: 1em;
-    background-color:#42b983; 
+    background-color:#35495e;
+    color: white;
 }
 
 .active {

@@ -24,9 +24,10 @@
 
 <style scoped>
     section {
-        background-color: lightpink;
-        padding: 10px;
-        border-radius: 5px;
+        background-color: rgb(51, 122, 183);;
+        padding-bottom: 3px;
+        padding-top:0;
+        border-radius: 3px;
     }
 
 </style>

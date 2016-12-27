@@ -89,20 +89,18 @@
     width:100%;
     max-width:980px;
     margin: auto;
-
 }
 .email-header{
     width:100%;
 }
-
 .email-footer{
     width:100%;
 }
 
 .emails{
     width:100%;
-    height:500px;
-    overflow:scroll;
+    height:480px;
+    /*overflow:scroll;*/
 }
 
 .email-list{
@@ -111,6 +109,8 @@
     min-width:150px;
     float: left;
     margin-top:0px;
+    height:475px;
+    overflow:scroll    
 }
 
 </style>
