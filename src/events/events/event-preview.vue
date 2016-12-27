@@ -53,7 +53,7 @@
         border: 1px solid darkorchid;
     }
     .event-preview{
-       margin-left: 35px;
+        margin-left: 35px;
         padding: 4px;
         margin-bottom: 20px;
         line-height: 1.42857143;
@@ -61,8 +61,8 @@
         border: 1px solid #aaa;
         border-radius: 4px;
         width: 100%;
-        max-width:310px;
-        height: 300px;
+        max-width:320px;
+        height: 320px;
         overflow-y: auto;
         overflow-x: hidden;
         font-size: 14px;
